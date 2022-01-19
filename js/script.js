@@ -13,7 +13,7 @@ function init() {
   
     console.log("test");
     const data = await fetch(`https://api.github.com/users/rdv123/repos`);
-  
+  console.log('data', data)
     let dataParse = await data.json();
     console.log("repo", dataParse.length);
   
@@ -28,8 +28,10 @@ function init() {
     const res = await Promise.all(resJson.map((res) => res.json()));
   
     const surilizeRes = res.flat(1);
+    console.log('res1111111', res)
+    console.log('sur', surilizeRes)
   
-    count = surilizeRes.reduce((acc, item) => {
+    let count = surilizeRes.reduce((acc, item) => {
       return (acc += item.contributions);
     }, 0);
     console.log("count", count);
